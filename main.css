@@ -6,7 +6,3 @@
 img {
   width: 25vw;
 }
-
-img:active {
-  transform: rotate3d(0, 1, 0, 35deg);
-}
