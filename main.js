@@ -1,3 +1,16 @@
+// DESKTOP GENİŞLİK AYARLAMA
+iwdth = window.innerWidth;
+ihght = window.innerHeight;
+
+if (iwdth > ihght){
+  // 9:16 ORANI
+  let cntntwidth = ihght * 0.5625;
+  console.log(cntntwidth)
+  $(".row").height(ihght).width(cntntwidth).css('overflow','hidden');
+
+  
+}
+
 // KARTLAR
 const kartlar = [
   // ANA KARTLAR
@@ -88,9 +101,9 @@ function sec(elem){
     setTimeout(function(){
       if (secilen[0].includes(secilen[1]) || secilen[1].includes(secilen[0])){
         $("#" + secilen[0] + ", #" + secilen[1]).attr("src", "resimler/bos.png").css("z-index", "-10");
-        eslesenler ++;
+        eslesenler += 2;
         if (eslesenler == 12) {
-          alert("OYUN BİTTİ!");
+          pop.up("OYUN BİTTİ!", "Tebrikler! Oyunu kazandın.");
           location.reload();
         }
       } else {
@@ -100,6 +113,7 @@ function sec(elem){
       secilen = [];
     }, 1000);
   }
+  dashboardYenile();
 }
 
 // RNG FONKSİYONU
@@ -113,4 +127,9 @@ function RNG(min, max, aciklama){
   }
  
   return r;
+}
+
+function dashboardYenile(){
+  $("#eslesenKart").html(eslesenler);
+  $("#kalanKart").html(24 - eslesenler);
 }
